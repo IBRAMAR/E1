@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <title>login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body {
+        background-image: url('static/images/wall13.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;  
+        background-size: cover;
+        image-rendering: pixelated;
+        height: 100%;
+      }
+      
+      </style>  
+  </head>
+  <body>
+    <div class="container">
+      <h1>Please login</h1>
+      <br>
+      <form action='' method="post">
+        <input type="text" placeholder="Username" name="username" value="{{
+          request.form.username }}">
+         <input type="password" placeholder="Password" name="password" value="{{
+          request.form.password }}">
+        <input class="btn btn-default" type="submit" value="Login">
+      </form>
+      {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+    </div>
+  </body>
+  <p><a href="/empty_page" ><img  src="{{ url_for('static', filename='images/gohome.jpg') }}" height=8% width=5% alt="home"/> </p>
+  <p<strong> Go home</strong> </p>
+  {% for message in get_flashed_messages() %}
+    {{message}}
+  {% endfor %}
+<br>
+<!-- <h3>Posts:</h3>
+{% for post in posts %}
+  <strong>Username:</strong> {{ post.username }} <br>
+  <strong>Password:</strong> {{ post.password }} <br>
+<br>
+{% endfor %}
+</html> -->

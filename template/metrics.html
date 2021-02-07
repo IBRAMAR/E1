@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <style>
+        div.a {
+          top:10%;
+          position: relative;
+          width: 35%;
+          /* height: 200px; */
+          /* border: 3px solid red; */
+        }
+        
+        div.b {
+          top : 10%;
+          position: relative;
+          left: 50%;
+          width: 35%;
+          /* height: 200px; */
+          /* border: 3px solid blue; */
+        } 
+        
+        div.c {
+          top:10%;
+          position: relative;
+          width: 35%;
+          /* height: 200px; */
+          /* border: 3px solid red; */
+        }
+        
+        div.d {
+          top : 10%;
+          position: relative;
+          left: 50%;
+          width: 35%;
+          /* height: 200px; */
+          /* border: 3px solid blue; */
+        } 
+        div.e {
+          top:10%;
+          position: relative;
+          width: 35%;
+          /* height: 200px; */
+          /* border: 3px solid red; */
+        }
+        
+        div.f {
+          top : 10%;
+          position: relative;
+          left: 50%;
+          width: 35%;
+          /* height: 200px; */
+          /* border: 3px solid blue; */
+        } 
+        
+        
+        
+        </style>
+</head>
+
+<body>
+
+    <!-- <h1>The right Property</h1> -->
+
+    <div class="a"><h1>Dataset</h1><div id="a">  </div></div>
+    <div class="b"><h1>Doctors per laboratory</h1><div id="b">  </div></div>
+    <div class="c"><h1>Datascientists per Compagny</h1><div id="c">  </div></div>
+    <div class="d"><h1>Label</h1><div id="d">  </div><div id="e">  </div><div id="f">  </div></div>
+    <!-- <div class="e"><h1>The right Property</h1><div id="e">  </div></div>
+    <div class="f"><h1>The right Property</h1><div id="f">  </div></div> -->
+    
+    <!-- {% for id in ids %}
+        <h3>{{id}}</h3>
+        <div id="{{id}}"></div>
+    {% endfor %} -->
+    <!-- <div class = 'a' style='top:10%;position: relative;width: 45%;height: 200px;' > <div id="a">  </div> </div>
+    <div class = 'b' style='top:10%;position: relative;width: 45%;height: 200px;left: 50% ;' > <div  id="b"> </div> </div>
+    <div class = 'c' style='top:10%;position: relative;width: 45%;height: 200px;' > <div id="c">  </div> </div>
+    <div class = 'd' style='top:10%;position: relative;width: 45%;height: 200px;left: 50% ;' > <div  id="d"> </div> </div>
+    <div class = 'e' style='top:10%;position: relative;width: 45%;height: 200px;' > <div id="e">  </div> </div>
+    <div class = 'f' style='top:10%;position: relative;width: 45%;height: 200px;left: 50% ;' > <div  id="f"> </div> </div> -->
+    <!-- <div class = 'b' style='top:10;position: absolute;width: 45%;height: 200px;border:3px solid blue;left: 50% ;' > <div  id="b"> </div> </div> -->
+    
+
+</body>
+
+
+<footer>
+    <!-- D3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Plotly.js -->
+    <!-- <script src="https://cdn.plot.ly/plotly-latest.js" charset="utf-8"></script> -->
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
+
+    <script type="text/javascript">
+
+        var graphs = {{graphJSON | safe}};
+        var ids = {{ids | safe}};
+
+        for(var i in graphs) {
+            Plotly.plot(ids[i], // the ID of the div, created above
+                        graphs[i].data,
+                        graphs[i].layout || {});
+        }
+
+    </script>
+</footer>
+
+</html>
