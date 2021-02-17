@@ -113,7 +113,7 @@ def doctor():
                 print('before uploading')
                 with open(os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename),'rb') as img:
                     file = img.read()
-                print('longueur fichier est de :',len(file))
+                # print('longueur fichier est de :',len(file))
                 label = request.form['label']
                 name = filename
                 doctor = session.get('user', None)
@@ -121,17 +121,14 @@ def doctor():
                 g.db = connect_db()
                 print('connection oki')
                 c = g.db.cursor()
-                #c.execute('CREATE TABLE data(image blob,name TEXT, label TEXT, doctor TEXT)')
+                # insert new labelise data into new table data
                 c.execute('INSERT INTO data (image,name,label,doctor) VALUES(?, ?, ?, ?)',(file,name, label, doctor))
-                print('excution oki')
                 g.db.commit()
                 c.close()
                 g.db.close()
                 image_label = True
                 message = f'{filename} added to db !! '
                 print('save db oki !!')
-                #return redirect(url_for('doctor',message = message,image_label = image_label))
-
     return render_template('doctor.html', image_label = image_label, message= message,doctor=doctor)
 
 @app.route('/pred_page')
